@@ -30,13 +30,9 @@ const swaggerOptions: any = {
         description: "Local server",
       },
       {
-        url: "https://samp-project.herokuapp.com/api/v1",
-        description: "DEV Env",
-      },
-      {
-        url: "https://app-uat.herokuapp.com/api/v1",
-        description: "UAT Env",
-      },
+        url: "https://sam-project.herokuapp.com/api/v1",
+        description: "PROD Env",
+      }
     ],
   },
   //['./routes/*.js]
