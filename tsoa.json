@@ -3,10 +3,11 @@
     "noImplicitAdditionalProperties": "throw-on-extras",
     "controllerPathGlobs": ["src/**/*Controller.ts"],
     "spec": {
-        "outputDirectory": "build",
+        "outputDirectory": "sam-project",
         "specVersion": 3
     },
     "routes": {
-        "routesDir": "build"
+        "basePath": "/api/v1",
+        "routesDir": "sam-project"
     }
 }

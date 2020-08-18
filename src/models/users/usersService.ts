@@ -6,6 +6,16 @@ import { v4 as uuid } from "uuid";
 export type UserCreationParams = Pick<User, "email" | "name" | "phoneNumbers">;
 
 export class UsersService {
+    public getAll(): User[] {
+        return [{
+            id: uuid(),
+            email: "jane@doe.com",
+            name: "Jane Doe",
+            status: "Happy",
+            phoneNumbers: [],
+        }];
+    }
+
     public get(id: string, name?: string): User {
         return {
             id,

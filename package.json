@@ -1,7 +1,12 @@
 {
   "name": "sam-projects",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "sam-project/src/server.js",
+  "scripts": {
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
+    "build": "rimraf ./sam-project && tsoa spec-and-routes && tsc",
+    "start": "npm run build && nodemon sam-project/src/server.js"
+  },
   "repository": "https://github.com/McAngelo/sam-projects.git",
   "author": "Michael Johnson <mcangelo200@gmail.com>",
   "license": "MIT",
@@ -9,6 +14,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "rimraf": "^3.0.2",
     "tsoa": "^3.2.1",
     "uuid": "^8.3.0"
   },
@@ -19,6 +25,7 @@
     "@types/node": "^14.6.0",
     "@types/uuid": "^8.3.0",
     "concurrently": "^5.3.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2"
   }
 }
