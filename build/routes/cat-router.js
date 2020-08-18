@@ -22,11 +22,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CatRouter = void 0;
 var express = __importStar(require("express"));
 var uuid_1 = require("uuid");
 var cors_1 = __importDefault(require("cors"));
-var Router = /** @class */ (function () {
-    function Router(server) {
+var CatRouter = /** @class */ (function () {
+    function CatRouter(server) {
         var router = express.Router();
         var cats = new Map();
         cats[uuid_1.v4()] = {
@@ -41,12 +42,30 @@ var Router = /** @class */ (function () {
             isHungry: true,
             lastFedDate: new Date(),
         };
+        /**
+         * @swagger
+         * /:
+         *  get:
+         *    description: Use to request all cats
+         *    responses:
+         *      '200':
+         *        description: A successful response
+         */
         router.get("/", function (req, res) {
             res.json({
                 message: "Nothing to see here, [url]/cats instead.",
             });
         });
         //get all cats
+        /**
+         * @swagger
+         * /:
+         *  get:
+         *    description: Use to request all cats
+         *    responses:
+         *      '200':
+         *        description: A successful response
+         */
         router.get("/cats", cors_1.default(), function (req, res) {
             res.json({
                 cats: cats,
@@ -58,7 +77,7 @@ var Router = /** @class */ (function () {
                 var cat = {};
                 Object.assign(cat, req.body);
                 var newUUID = uuid_1.v4();
-                //cats[newUUID] = cat;
+                cats[newUUID] = cat;
                 res.json({
                     uuid: newUUID,
                 });
@@ -119,6 +138,7 @@ var Router = /** @class */ (function () {
         router.options("*", cors_1.default());
         server.use("/", router);
     }
-    return Router;
+    return CatRouter;
 }());
-exports.default = Router;
+exports.CatRouter = CatRouter;
+//export default CatRouter;

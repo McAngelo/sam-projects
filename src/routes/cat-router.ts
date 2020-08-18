@@ -1,9 +1,9 @@
 import * as express from "express";
-import Cat from "./models/Cat";
+import Cat from "../models/Cat";
 import { v4 as uuid } from "uuid";
 import cors from "cors";
 
-class Router {
+export class CatRouter {
   constructor(server: express.Express) {
     const router = express.Router();
 
@@ -23,7 +23,7 @@ class Router {
 
     /**
      * @swagger
-     * /cats:
+     * /:
      *  get:
      *    description: Use to request all cats
      *    responses:
@@ -37,6 +37,15 @@ class Router {
     });
 
     //get all cats
+    /**
+     * @swagger
+     * /:
+     *  get:
+     *    description: Use to request all cats
+     *    responses:
+     *      '200':
+     *        description: A successful response
+     */
     router.get(
       "/cats",
       cors(),
@@ -132,4 +141,4 @@ class Router {
   }
 }
 
-export default Router;
+//export default CatRouter;

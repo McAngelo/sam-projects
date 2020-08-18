@@ -1,4 +1,3 @@
-console.log("Hello world!");
 import app from './app'
 
 const port = parseInt(process.env.PORT || '3000')
