@@ -140,5 +140,3 @@ export class CatRouter {
     server.use("/", router);
   }
 }
-
-//export default CatRouter;

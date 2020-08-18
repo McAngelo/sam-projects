@@ -1,5 +1,5 @@
 import express from "express";
-import { CatRouter } from "./routes/index";
+import { CatRouter, BirdRouter } from "./routes/index";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsDoc from "swagger-jsdoc";
 import * as swaggerDocument from "./swagger.json";
@@ -51,6 +51,7 @@ class App {
     this.httpServer.use(bodyParser.json());
 
     new CatRouter(this.httpServer);
+    new BirdRouter(this.httpServer);
 
     this.httpServer.use(
       "/api-docs",
@@ -58,11 +59,11 @@ class App {
       swaggerUi.setup(swaggerDocs)
     );
 
-    this.httpServer.use(
+    /* this.httpServer.use(
       "/swagger",
       swaggerUi.serve,
       swaggerUi.setup(swaggerDocument)
-    );
+    ); */
   }
 
   public Start = (port: number) => {
